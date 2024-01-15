@@ -12,7 +12,7 @@ st.dataframe(data=car_data.sample(10) )
 st.divider()
 
 st.header('Tipo de vehículos por fabricante')
-st.write('La siguiente gráfica muestra el tipo de vehiculos por fabricante :car:') 
+st.write('La siguiente gráfica muestra el tipo de vehículos por fabricante :car:') 
 
 fig = px.bar(car_data, x="manufacturer", color="type")
 fig.update_layout(
@@ -23,7 +23,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.divider()
 
 st.header('Estado del vehículo')
-st.write('La siguiente gráfica muestra la distrubucion del vehículo segun el año y lo clasifica segun su estado :white_check_mark:' ) 
+st.write('La siguiente gráfica muestra la distribución del vehículo según el año y lo clasifica según su estado :white_check_mark:' )
 
 fig2 = px.histogram(car_data, x="model_year", color="condition")
 fig2.update_layout(
@@ -33,7 +33,7 @@ st.plotly_chart(fig2, use_container_width=True)
 
 st.divider()
 
-st.header('Distrubución de precios segun la marca de vehículos')
+st.header('Distribución  de precios por marca')
 
 option = st.selectbox(
     '¿Que marca de vehículo te gustaría ver?',
@@ -45,12 +45,11 @@ option = st.selectbox(
 if option:
     df = car_data[car_data['manufacturer']==option]
     st.subheader(option)
-    st.write('La siguiente gráfica muestra la distrubucion del precio de los vehículos segun marca :money_with_wings:' ) 
+    st.write('La siguiente gráfica muestra la distribución del precio de los vehículos según la marca seleccionada :money_with_wings:') 
     fig3 = px.histogram(df, x="price" )
-    fig.update_layout(
-        xaxis_title_text = 'Fabricante', 
-        yaxis_title_text = 'Número de vehículos',
-        template='plotly_dark')
+    fig3.update_layout(
+        xaxis_title_text = 'Precio', 
+        yaxis_title_text = 'Conteo',)
     st.plotly_chart(fig3, use_container_width=True)
 
 
