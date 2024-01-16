@@ -33,7 +33,7 @@ st.plotly_chart(fig2, use_container_width=True)
 
 st.divider()
 
-st.header('Distribución  de precios por marca')
+st.header('Distribución de precios por marca')
 
 option = st.selectbox(
     '¿Que marca de vehículo te gustaría ver?',
@@ -52,10 +52,25 @@ if option:
         yaxis_title_text = 'Conteo',)
     st.plotly_chart(fig3, use_container_width=True)
 
+st.divider()
 
+st.header('Gráfica de dispersión interactiva')
 
+opt1 = st.selectbox(
+    'Selecciona y',
+    ('price','model_year','odometer','days_listed'))
+st.write('You selected:', opt1)
 
+opt2 = st.selectbox(
+    'Selecciona x',
+    ('odometer','model_year','price','days_listed'))
+st.write('You selected:', opt2)
 
+if opt1 and opt2:
+    st.subheader("Esta es una gráfica interactiva para analizar los datos :chart_with_upwards_trend:")
+    fig4 = px.scatter(car_data, x=opt2, y=opt1)
+    st.plotly_chart(fig4, use_container_width=True)
+ 
 
 
 
